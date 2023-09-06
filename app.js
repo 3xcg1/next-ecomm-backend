@@ -9,16 +9,16 @@ import { signAccessToken } from "./src/utils/jwt.js"
 const app = express()
 app.use(cors())
 app.use(express.json())
-const port = process.env.PORT || 8080
+// const port = process.env.PORT || 8080 // REMOVE this line for testing
 
 app.get('/', async(req, res) => {
   const allUsers = await prisma.user.findMany()
   res.json(allUsers)
 })
 
-app.listen(port, () => {
-  console.log(`App started; listening on port ${port}`)
-})
+// app.listen(port, () => {
+//   console.log(`App started; listening on port ${port}`)
+// }) // REMOVE lines for testing 
 
 
 function filter(obj, ...keys) {
@@ -163,3 +163,5 @@ app.post('/sign-in', async (req, res) => {
   const accessToken = await signAccessToken(userFiltered)
   return res.json({ accessToken })
 })
+
+export default app // ADDed for testing

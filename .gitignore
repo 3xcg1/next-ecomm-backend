@@ -3,4 +3,4 @@ node_modules
 # Keep environment variables out of version control
 .env* 
 # we remove .env and replace it with this. * is a wild card meaning anything that starts with .env will be ignored
-db
+db* 
