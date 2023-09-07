@@ -11,7 +11,7 @@ async function cleanupDatabase() {
   );
 }
 
-describe("POST /auth", () => {
+describe("POST /auth", () => { //*auth
   const user = {
     name: 'John',
     email: 'john9@example.com',
@@ -33,7 +33,7 @@ describe("POST /auth", () => {
       .send(user)
       .set('Accept', 'application/json')
     const response = await request(app)
-      .post("/auth")
+      .post("/auth") //*auth
       .send(user)
       .set('Accept', 'application/json')
     expect(response.statusCode).toBe(200);
@@ -47,10 +47,10 @@ describe("POST /auth", () => {
       .send(user)
       .set('Accept', 'application/json')
     const response = await request(app)
-      .post("/auth")
+      .post("/auth") //*auth
       .send(user)
       .set('Accept', 'application/json')
-    expect(response.statusCode).toBe(401);
+    expect(response.statusCode).toBe(400);
     expect(response.body.accessToken).toBeFalsy;
     expect(response.body.error.email).toBe('is invalid');
   });
@@ -62,10 +62,10 @@ describe("POST /auth", () => {
       .send(user)
       .set('Accept', 'application/json')
     const response = await request(app)
-      .post("/auth")
+      .post("/auth") //*auth
       .send(user)
       .set('Accept', 'application/json')
-    expect(response.statusCode).toBe(401);
+    expect(response.statusCode).toBe(400);
     expect(response.body.accessToken).toBeFalsy;
     expect(response.body.error.password).toBe(undefined);
   });
